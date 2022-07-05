@@ -1,20 +1,20 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import AppStack from './AppStack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import HomeScreen from '../screens/HomeScreen/HomeScreen';
+import SearchScreen from '../screens/SearchScreen/SearchScreen';
+import FavouritesScreen from '../screens/FavouritesScreen/FavouritesScreen';
 
-const RootStack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 const RootNavigator = () => {
   return (
     <NavigationContainer>
-      <RootStack.Navigator>
-        <RootStack.Screen
-          name="Main"
-          component={AppStack}
-          options={{headerShown: false}}
-        />
-      </RootStack.Navigator>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Search" component={SearchScreen} />
+        <Tab.Screen name="Favourites" component={FavouritesScreen} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 };
