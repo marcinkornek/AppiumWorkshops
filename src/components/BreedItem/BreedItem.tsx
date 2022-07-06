@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {Text, StyleSheet, Pressable} from 'react-native';
 import {BreedType} from '../../utils/types';
 import CatImage from '../CatImage/CatImage';
 
@@ -11,14 +11,15 @@ const styles = StyleSheet.create({
 
 type Props = {
   breed: BreedType;
+  onPress: (breed: BreedType) => void;
 };
 
-const BreedItem: React.FC<Props> = ({breed}) => {
+const BreedItem: React.FC<Props> = ({breed, onPress}) => {
   return (
-    <View>
+    <Pressable onPress={() => onPress(breed)}>
       <CatImage url={breed?.image?.url} size="small" />
       <Text style={styles.name}>{breed.name}</Text>
-    </View>
+    </Pressable>
   );
 };
 

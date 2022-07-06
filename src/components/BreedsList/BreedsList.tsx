@@ -1,5 +1,7 @@
+import {useNavigation} from '@react-navigation/native';
 import * as React from 'react';
 import {FlatList, StyleSheet} from 'react-native';
+import {ScreenNavigationProp} from '../../routes/RootNavigator';
 import {BreedType} from '../../utils/types';
 import BreedItem from '../BreedItem/BreedItem';
 
@@ -15,8 +17,13 @@ type Props = {
 };
 
 const BreedsList: React.FC<Props> = ({breeds}) => {
+  const navigation = useNavigation<ScreenNavigationProp>();
+  const handlePress = (breed: BreedType) => {
+    navigation.navigate('BreedDetails', {breed});
+  };
+
   const renderItem = ({item}: {item: BreedType}) => {
-    return <BreedItem breed={item} />;
+    return <BreedItem breed={item} onPress={handlePress} />;
   };
 
   return (
