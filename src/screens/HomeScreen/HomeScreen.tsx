@@ -1,16 +1,14 @@
 import * as React from 'react';
-import {Text} from 'react-native';
+import {ActivityIndicator, Text} from 'react-native';
 import {useQuery} from 'react-query';
 import BreedsList from '../../components/BreedsList/BreedsList';
-import instance from '../../utils/axios';
+import {getBreeds} from '../../utils/api';
 
 const HomeScreen = () => {
-  const {isLoading, error, data} = useQuery('repoData', () =>
-    instance.get('breeds'),
-  );
+  const {isLoading, error, data} = useQuery('breeds', getBreeds);
 
   if (isLoading) {
-    return <Text>'Loading...'</Text>;
+    return <ActivityIndicator />;
   }
 
   if (error) {

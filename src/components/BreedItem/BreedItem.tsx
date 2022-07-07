@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Text, StyleSheet, Pressable} from 'react-native';
+import {breedItemTestID} from '../../utils/testIDs';
 import {BreedType} from '../../utils/types';
 import CatImage from '../CatImage/CatImage';
 
@@ -16,7 +17,9 @@ type Props = {
 
 const BreedItem: React.FC<Props> = ({breed, onPress}) => {
   return (
-    <Pressable onPress={() => onPress(breed)}>
+    <Pressable
+      onPress={() => onPress(breed)}
+      testID={`${breedItemTestID}-${breed.name}`}>
       <CatImage url={breed?.image?.url} size="small" />
       <Text style={styles.name}>{breed.name}</Text>
     </Pressable>
