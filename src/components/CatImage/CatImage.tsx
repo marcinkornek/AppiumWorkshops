@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  url: string;
+  url?: string;
   size: 'small' | 'large';
 };
 
