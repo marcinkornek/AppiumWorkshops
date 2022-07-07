@@ -46,3 +46,22 @@ export type BreedType = {
     url: string;
   };
 };
+
+export type CatImageType = {
+  id: string;
+  url: string;
+};
+
+export type ImageSizesType = 'full' | 'med' | 'small' | 'thumb';
+export type ImageOrderType = 'RANDOM' | 'DESC' | 'ASC';
+
+export type ImageRequestType = {
+  size?: ImageSizesType;
+  mime_types?: [string];
+  order?: ImageOrderType;
+  limit?: number;
+  page?: number;
+  category_ids?: [number];
+  format?: 'json' | 'src';
+  breed_id?: string;
+};

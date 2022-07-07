@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 
 type Props = {
   url?: string;
-  size: 'small' | 'large';
+  size?: 'small' | 'large';
 };
 
 const CatImage: React.FC<Props> = ({url, size = 'small'}) => {
