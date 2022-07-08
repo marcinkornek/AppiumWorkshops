@@ -19,7 +19,7 @@ type Props = {
 const BreedDetails: React.FC<Props> = ({breed}) => {
   return (
     <View>
-      <CatImage url={breed?.image?.url} size="large" />
+      {breed?.image?.url && <CatImage url={breed.image.url} size="large" />}
       <Text style={styles.name}>{breed.name}</Text>
       <Text style={styles.description}>{breed.description}</Text>
       <Pressable onPress={() => Linking.openURL(breed.wikipedia_url)}>
