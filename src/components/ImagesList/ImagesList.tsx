@@ -14,9 +14,15 @@ type Props = {
   images?: CatImageType[];
   isLoading?: boolean;
   withAddToFav?: boolean;
+  ListHeaderComponent: React.ReactNode;
 };
 
-const ImagesList: React.FC<Props> = ({images, isLoading, withAddToFav}) => {
+const ImagesList: React.FC<Props> = ({
+  images,
+  isLoading,
+  withAddToFav,
+  ListHeaderComponent,
+}) => {
   const renderItem = ({item}: {item: CatImageType}) => {
     return (
       <CatImage url={item?.url} id={item?.id} withAddToFav={withAddToFav} />
@@ -34,6 +40,7 @@ const ImagesList: React.FC<Props> = ({images, isLoading, withAddToFav}) => {
       keyExtractor={item => item.id}
       numColumns={3}
       columnWrapperStyle={styles.listContentContainer}
+      ListHeaderComponent={ListHeaderComponent}
     />
   );
 };

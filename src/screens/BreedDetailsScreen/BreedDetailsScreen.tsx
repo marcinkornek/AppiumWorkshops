@@ -17,11 +17,14 @@ const BreedDetailsScreen = ({route}: Props) => {
   );
   const images = data?.data;
 
+  const renderHeaderComponent = () => <BreedDetails breed={breed} />;
+
   return (
-    <>
-      <BreedDetails breed={breed} />
-      <ImagesList images={images} isLoading={isLoading} />
-    </>
+    <ImagesList
+      images={images}
+      isLoading={isLoading}
+      ListHeaderComponent={renderHeaderComponent()}
+    />
   );
 };
 

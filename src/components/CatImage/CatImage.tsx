@@ -15,8 +15,9 @@ const styles = StyleSheet.create({
     height: 100,
   },
   imageLarge: {
-    width: 200,
-    height: 200,
+    width: '100%',
+    height: undefined,
+    aspectRatio: 1,
   },
   favouritesStar: {
     position: 'absolute',
