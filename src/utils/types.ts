@@ -65,3 +65,20 @@ export type ImageRequestType = {
   format?: 'json' | 'src';
   breed_id?: string;
 };
+
+export type FavouriteType = {
+  image_id: string;
+  url: string;
+  favourite_id: string;
+};
+
+export type FavouriteResponseType = {
+  created_at: string;
+  id: number;
+  image: {
+    id: string;
+    url: string;
+  };
+  sub_id: string;
+  user_id: string;
+};

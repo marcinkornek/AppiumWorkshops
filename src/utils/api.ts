@@ -12,3 +12,11 @@ export const getImages = ({
   limit = 100,
 }: ImageRequestType) =>
   instance.get('images/search', {params: {breed_id, size, limit}});
+
+export const postAddImageToFavourites = (imageId: string) =>
+  instance.post('favourites', {image_id: imageId});
+
+export const deleteImageFromFavourites = (favouriteId: string) =>
+  instance.delete('favourites/' + favouriteId);
+
+export const getFavourites = () => instance.get('favourites');

@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  breeds: [BreedType];
+  breeds: BreedType[];
 };
 
 const BreedsList: React.FC<Props> = ({breeds}) => {

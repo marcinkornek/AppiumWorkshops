@@ -1,8 +1,17 @@
+import {useAtomValue} from 'jotai';
 import * as React from 'react';
-import {Text} from 'react-native';
+import ImagesList from '../../components/ImagesList/ImagesList';
+import {favouritesAtom} from '../../utils/atoms';
 
-const FavouritesScreen = () => {
-  return <Text>FavouritesScreen</Text>;
+const HomeScreen = () => {
+  const favourites = useAtomValue(favouritesAtom);
+
+  const images = favourites.map(favourite => ({
+    url: favourite?.url,
+    id: favourite?.image_id,
+  }));
+
+  return <ImagesList images={images} />;
 };
 
-export default FavouritesScreen;
+export default HomeScreen;

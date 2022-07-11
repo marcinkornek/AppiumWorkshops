@@ -20,7 +20,12 @@ const BreedItem: React.FC<Props> = ({breed, onPress}) => {
     <Pressable
       onPress={() => onPress(breed)}
       testID={`${breedItemTestID}-${breed.name}`}>
-      <CatImage url={breed?.image?.url} size="small" />
+      <CatImage
+        url={breed?.image?.url}
+        id={breed?.image?.id}
+        size="small"
+        withAddToFav={false}
+      />
       <Text style={styles.name}>{breed.name}</Text>
     </Pressable>
   );

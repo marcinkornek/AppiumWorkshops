@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {ActivityIndicator, FlatList, StyleSheet} from 'react-native';
-import {BreedType, CatImageType} from '../../utils/types';
+import {CatImageType} from '../../utils/types';
 import CatImage from '../CatImage/CatImage';
 
 const styles = StyleSheet.create({
@@ -11,13 +11,16 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  images?: [CatImageType];
+  images?: CatImageType[];
   isLoading?: boolean;
+  withAddToFav?: boolean;
 };
 
-const ImagesList: React.FC<Props> = ({images, isLoading}) => {
+const ImagesList: React.FC<Props> = ({images, isLoading, withAddToFav}) => {
   const renderItem = ({item}: {item: CatImageType}) => {
-    return <CatImage url={item?.url} />;
+    return (
+      <CatImage url={item?.url} id={item?.id} withAddToFav={withAddToFav} />
+    );
   };
 
   if (isLoading) {

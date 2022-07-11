@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  breeds: [BreedType];
+  breeds: BreedType[];
 };
 
 const SearchList: React.FC<Props> = ({breeds}) => {
