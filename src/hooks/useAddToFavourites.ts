@@ -1,6 +1,7 @@
 import {useAtomValue, useUpdateAtom} from 'jotai/utils';
 import {postAddImageToFavourites} from '../utils/api';
 import {favouritesAtom} from '../utils/atoms';
+import Toast from 'react-native-toast-message';
 
 export default () => {
   const favourites = useAtomValue(favouritesAtom);
@@ -21,6 +22,10 @@ export default () => {
     const response = await postAddImageToFavourites(image_id);
     if (response?.data?.message === 'SUCCESS' && response?.data?.id) {
       updateFavourites({image_id, url, favourite_id: response.data.id});
+      Toast.show({
+        type: 'success',
+        text1: 'Successfully added to favourites',
+      });
     }
   };
 

@@ -1,7 +1,7 @@
 import {useAtomValue} from 'jotai';
 import {useUpdateAtom} from 'jotai/utils';
 import {deleteImageFromFavourites} from '../utils/api';
-
+import Toast from 'react-native-toast-message';
 import {favouritesAtom} from '../utils/atoms';
 import {FavouriteType} from '../utils/types';
 
@@ -24,6 +24,10 @@ export default () => {
       const response = await deleteImageFromFavourites(favouriteId);
       if (response?.data?.message === 'SUCCESS') {
         removeFromFavouritesAtom(image_id);
+        Toast.show({
+          type: 'success',
+          text1: 'Successfully removed from favourites',
+        });
       }
     }
   };
