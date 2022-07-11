@@ -4,9 +4,10 @@ import {CatImageType} from '../../utils/types';
 import CatImage from '../CatImage/CatImage';
 
 const styles = StyleSheet.create({
-  listContentContainer: {
-    padding: 10,
+  columnWrapperStyle: {
     justifyContent: 'space-between',
+    padding: 10,
+    marginBottom: 20,
   },
 });
 
@@ -39,7 +40,7 @@ const ImagesList: React.FC<Props> = ({
       renderItem={renderItem}
       keyExtractor={item => item.id}
       numColumns={3}
-      columnWrapperStyle={styles.listContentContainer}
+      columnWrapperStyle={styles.columnWrapperStyle}
       ListHeaderComponent={ListHeaderComponent}
     />
   );
