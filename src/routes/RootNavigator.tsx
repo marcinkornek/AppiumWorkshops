@@ -27,7 +27,11 @@ const RootNavigator = () => {
           component={TabNavigator}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="BreedDetails" component={BreedDetailsScreen} />
+        <Stack.Screen
+          name="BreedDetails"
+          component={BreedDetailsScreen}
+          options={({route}) => ({title: route.params.breed.name})}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
