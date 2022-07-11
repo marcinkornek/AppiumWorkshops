@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {View, StyleSheet, TextInput} from 'react-native';
+import {View, StyleSheet, TextInput, Pressable} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
   searchBarInputTestID,
   searchBarSubmitBtnTestID,
@@ -18,6 +19,14 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
   },
+  clearBtn: {
+    position: 'absolute',
+    right: 10,
+    top: 7,
+  },
+  textInputWrapper: {
+    flex: 1,
+  },
 });
 
 type Props = {
@@ -33,15 +42,27 @@ const SearchBar: React.FC<Props> = ({onSearch}) => {
     }
   };
 
+  const handleClear = () => {
+    setQuery('');
+    onSearch('');
+  };
+
   return (
     <View style={styles.bar} testID={searchBarTestID}>
-      <TextInput
-        style={styles.input}
-        onChangeText={setQuery}
-        value={query}
-        placeholder="Search"
-        testID={searchBarInputTestID}
-      />
+      <View style={styles.textInputWrapper}>
+        <TextInput
+          style={styles.input}
+          onChangeText={setQuery}
+          value={query}
+          placeholder="Search"
+          testID={searchBarInputTestID}
+        />
+        {query && (
+          <Pressable onPress={handleClear} style={styles.clearBtn}>
+            <Icon name="close" size={20} />
+          </Pressable>
+        )}
+      </View>
       <PrimaryButton
         onPress={handleSearch}
         title="Search"
