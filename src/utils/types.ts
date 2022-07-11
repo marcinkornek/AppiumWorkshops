@@ -1,3 +1,5 @@
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+
 export type BreedType = {
   weight: {
     imperial: string;

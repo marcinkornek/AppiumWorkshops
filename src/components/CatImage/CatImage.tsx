@@ -1,8 +1,10 @@
+import {useNavigation} from '@react-navigation/native';
 import * as React from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import {Image, Pressable, StyleSheet, View} from 'react-native';
 import useAddToFavourites from '../../hooks/useAddToFavourites';
 import useIsImageFavourite from '../../hooks/useIsImageFavourite';
 import useRemoveFromFavourites from '../../hooks/useRemoveFromFavourites';
+import {StackNavigationProp} from '../../routes/RootNavigator';
 import {CAT_PLACEHOLDER_URL} from '../../utils/constants';
 import FavouritesStar from '../FavouritesStar/FavouritesStar';
 
@@ -39,6 +41,7 @@ const CatImage: React.FC<Props> = ({
   size = 'small',
   withAddToFav = true,
 }) => {
+  const {navigate} = useNavigation<StackNavigationProp>();
   const onAddToFavourites = useAddToFavourites();
   const onRemoveFromFavourites = useRemoveFromFavourites();
   const isActive = useIsImageFavourite(id);
@@ -56,8 +59,16 @@ const CatImage: React.FC<Props> = ({
     onRemoveFromFavourites(id);
   };
 
+  const handleOpenModal = () => {
+    navigate('ImageFullScreen', {id, url});
+  };
+
+  const RootComponent = withAddToFav ? Pressable : View;
+
   return (
-    <View style={styles.container}>
+    <RootComponent
+      style={styles.container}
+      onPress={withAddToFav ? handleOpenModal : undefined}>
       <Image
         source={{uri: url || CAT_PLACEHOLDER_URL}}
         style={[styles.image, size === 'large' && styles.imageLarge]}
@@ -71,7 +82,7 @@ const CatImage: React.FC<Props> = ({
           style={styles.favouritesStar}
         />
       )}
-    </View>
+    </RootComponent>
   );
 };
 
