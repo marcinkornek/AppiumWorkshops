@@ -13,6 +13,7 @@
     "@react-navigation/bottom-tabs": "^6.3.1",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
+    "@types/react-native-vector-icons": "^6.4.11",
     "axios": "^0.27.2",
     "jotai": "^1.7.4",
     "react": "18.0.0",
