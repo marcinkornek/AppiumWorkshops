@@ -22,3 +22,14 @@ export const catQualities = [
   'Stranger_friendly',
   'Vocalisation',
 ];
+
+export const mostSearchedTags = [
+  'American',
+  'Australian',
+  'British Shorthair',
+  'California Spangled',
+  'Japanese',
+  'Russian Blue',
+  'Scottish Fold',
+  'Siberian',
+];
