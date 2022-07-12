@@ -7,3 +7,18 @@ export const defaultHitSlop = {
   left: 10,
   right: 10,
 };
+
+export const catQualities = [
+  'Adaptability',
+  'Affection_level',
+  'Child_friendly',
+  'Dog_friendly',
+  'Energy_level',
+  'Grooming',
+  'Health_issues',
+  'Intelligence',
+  'Shedding_level',
+  'Social_needs',
+  'Stranger_friendly',
+  'Vocalisation',
+];

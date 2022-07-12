@@ -19,11 +19,7 @@ const styles = StyleSheet.create({
   link: {
     textDecorationLine: 'underline',
     color: 'blue',
-  },
-  photosSection: {
-    marginTop: 20,
-    fontSize: 18,
-    fontWeight: 'bold',
+    marginBottom: 20,
   },
 });
 
@@ -43,7 +39,6 @@ const BreedDetails: React.FC<Props> = ({breed}) => {
         <Pressable onPress={() => Linking.openURL(breed.wikipedia_url)}>
           <Text style={styles.link}>Read on Wikipedia</Text>
         </Pressable>
-        <Text style={styles.photosSection}>Photos</Text>
       </View>
     </View>
   );
