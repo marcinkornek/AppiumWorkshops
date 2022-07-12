@@ -22,7 +22,7 @@ After(async function () {
   if (isAndroid) {
     // If you have different app/bundle id on different platforms, remember to change it here
     await driver.terminateApp('com.appiumworkshop');
-  } else {
+  } else if (isIos) {
     await driver.terminateApp('org.reactjs.native.example.AppiumWorkshop');
   }
 });

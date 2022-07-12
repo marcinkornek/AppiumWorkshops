@@ -35,6 +35,7 @@ Installing wdio packages:
 
 After the installation, you should have following structure created:
 
+```
 | test
 | ---- | features |
 | ---- | ---- | `<dummy-feature>`
@@ -45,6 +46,7 @@ After the installation, you should have following structure created:
 | ---- | ---- | `<dummy-step-definition-files>`
 | ---- | tsconfig.json
 | ---- | wdio.conf.ts
+```
 
 After finishing this guide and checking that everything is working, you can remove `dummy` files
 
@@ -92,7 +94,7 @@ yarn add -D @wdio/cli @wdio/types @wdio/appium-service appium chromedriver ts-no
 
 Use tsconfig from root directory
 
-```ts
+```diff
 + import * as path from 'path';
 
 export const config: Options.TestRunner = {
@@ -177,6 +179,7 @@ export const config: WebdriverIO.Config = {
 ```
 
 - add ios config
+
 Create `<root>/test/wdio.ios.conf.ts`
 
 ```ts
@@ -205,6 +208,83 @@ export const config: WebdriverIO.Config = {
 };
 ```
 
+- add web config
+
+Create `<root>/test/wdio.web.conf.ts`
+
+```ts
+import 'webdriverio';
+import {config as sharedConfig} from './wdio.conf';
+
+export const config: WebdriverIO.Config = {
+  ...sharedConfig,
+  //
+  // ====================
+  // Runner Configuration
+  // ====================
+  //
+  runner: 'local',
+  capabilities: [
+    {
+      // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+      // grid with only 5 firefox instances available you can make sure that not more than
+      // 5 instances get started at a time.
+      maxInstances: 5,
+      //
+      browserName: 'chrome',
+      acceptInsecureCerts: true,
+      // If outputDir is provided WebdriverIO can capture driver session logs
+      // it is possible to configure which logTypes to include/exclude.
+      // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
+      // excludeDriverLogs: ['bugreport', 'server'],
+      'goog:chromeOptions': {
+        args: ['--incognito'],
+      },
+      platformName: 'web',
+    },
+  ],
+};
+```
+
+Create `<root>/test/wdio.web.headless.conf.ts`
+
+```ts
+import 'webdriverio';
+import {config as sharedConfig} from './wdio.conf';
+
+export const config: WebdriverIO.Config = {
+  ...sharedConfig,
+  //
+  // ====================
+  // Runner Configuration
+  // ====================
+  //
+  runner: 'local',
+  capabilities: [
+    {
+      // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+      // grid with only 5 firefox instances available you can make sure that not more than
+      // 5 instances get started at a time.
+      maxInstances: 5,
+      //
+      browserName: 'chrome',
+      acceptInsecureCerts: true,
+      // If outputDir is provided WebdriverIO can capture driver session logs
+      // it is possible to configure which logTypes to include/exclude.
+      // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
+      // excludeDriverLogs: ['bugreport', 'server'],
+      'goog:chromeOptions': {
+        args: ['--incognito'],
+      },
+      'wdio:devtoolsOptions': {
+        headless: true,
+      },
+      platformName: 'web',
+    },
+  ],
+};
+```
+
 - add test scripts to `<root>/package.json`
 
 ```json
@@ -215,6 +295,8 @@ export const config: WebdriverIO.Config = {
     "test-e2e:android:build": "cd android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release && cd ..",
     "test-e2e:ios": "wdio run ./test/wdio.ios.conf.ts",
     "test-e2e:ios:build": "xcodebuild -workspace ios/AppiumWorkshop.xcworkspace -scheme AppiumWorkshopRelease -sdk iphonesimulator -derivedDataPath ios/build",
+    "test-e2e:web": "wdio run ./test/wdio.web.conf.ts",
+    "test-e2e:web:headless": "wdio run ./test/wdio.web.headless.conf.ts",
     //...
   },
 }
@@ -280,7 +362,7 @@ After(async function () {
   if (isAndroid) {
     // If you have different app/bundle id on different platforms, remember to change it here
     await driver.terminateApp('com.appiumworkshop');
-  } else {
+  } else if (isIos) {
     await driver.terminateApp('org.reactjs.native.example.AppiumWorkshop');
   }
 });
