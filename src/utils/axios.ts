@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Config from 'react-native-config';
+import Config from 'react-native-ultimate-config';
 
 const instance = axios.create({
   baseURL: 'https://api.thecatapi.com/v1/',
