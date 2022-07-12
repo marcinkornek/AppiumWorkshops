@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {View, Text, StyleSheet, Linking, Pressable} from 'react-native';
+import {breedDetailsIDs} from '../../utils/testIDs';
 import {BreedType} from '../../utils/types';
 import CatImage from '../CatImage/CatImage';
 
@@ -35,7 +36,11 @@ const BreedDetails: React.FC<Props> = ({breed}) => {
       )}
       <View style={styles.descriptionWrapper}>
         <Text style={styles.name}>{breed.name}</Text>
-        <Text style={styles.description}>{breed.description}</Text>
+        <Text
+          testID={breedDetailsIDs.breedDescription}
+          style={styles.description}>
+          {breed.description}
+        </Text>
         <Pressable onPress={() => Linking.openURL(breed.wikipedia_url)}>
           <Text style={styles.link}>Read on Wikipedia</Text>
         </Pressable>

@@ -2,6 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import * as React from 'react';
 import {FlatList, StyleSheet} from 'react-native';
 import {ScreenNavigationProp} from '../../routes/RootNavigator';
+import {breedsListIDs} from '../../utils/testIDs';
 import {BreedType} from '../../utils/types';
 import BreedItem from '../BreedItem/BreedItem';
 
@@ -33,6 +34,7 @@ const BreedsList: React.FC<Props> = ({breeds}) => {
       keyExtractor={item => item.id}
       numColumns={3}
       columnWrapperStyle={styles.listContentContainer}
+      testID={breedsListIDs.breedsList}
     />
   );
 };

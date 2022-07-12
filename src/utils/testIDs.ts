@@ -6,3 +6,15 @@ export const searchBarTestID = 'SearchBar';
 export const searchBarInputTestID = 'SearchBarInput';
 export const searchBarSubmitBtnTestID = 'SearchBarSubmitBtn';
 export const FavouritesStarDefaultTestID = 'FavouritesStarDefault';
+
+export const homeScreenIDs = {
+  homeScreen: 'homeScreen',
+};
+
+export const breedsListIDs = {
+  breedsList: 'breedsList',
+};
+
+export const breedDetailsIDs = {
+  breedDescription: 'breedDescription',
+};
