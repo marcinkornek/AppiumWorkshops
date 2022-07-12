@@ -12,7 +12,7 @@ const MostSearchedTagsList: FC<MostSearchedTagsListProps> = ({
   tags,
 }) => {
   const renderMostSearchedTags = ({item}: {item: string}) => (
-    <Tag label={item} onPress={() => onTagPress(item)} />
+    <Tag key={item} label={item} onPress={() => onTagPress(item)} />
   );
 
   return (

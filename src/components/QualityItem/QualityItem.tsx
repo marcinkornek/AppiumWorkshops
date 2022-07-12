@@ -28,8 +28,12 @@ const QualityItem: React.FC<Props> = ({title, number}) => {
     <View style={styles.container}>
       <Text>{title}</Text>
       <View style={styles.starsWrapper}>
-        {Array.from(Array(number)).map(() => renderIcon(true))}
-        {Array.from(Array(5 - number)).map(() => renderIcon(false))}
+        {Array.from(Array(number)).map((_, i) => (
+          <React.Fragment key={i}>{renderIcon(true)}</React.Fragment>
+        ))}
+        {Array.from(Array(5 - number)).map((_, i) => (
+          <React.Fragment key={i}>{renderIcon(false)}</React.Fragment>
+        ))}
       </View>
     </View>
   );

@@ -23,7 +23,7 @@ const BreedsList: React.FC<Props> = ({breeds}) => {
   };
 
   const renderItem = ({item}: {item: BreedType}) => {
-    return <BreedItem breed={item} onPress={handlePress} />;
+    return <BreedItem key={item.id} breed={item} onPress={handlePress} />;
   };
 
   return (
