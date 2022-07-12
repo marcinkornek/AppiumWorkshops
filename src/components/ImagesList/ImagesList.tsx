@@ -15,7 +15,7 @@ type Props = {
   images?: CatImageType[];
   isLoading?: boolean;
   withAddToFav?: boolean;
-  ListHeaderComponent: React.ReactNode;
+  ListHeaderComponent?: React.ReactElement;
 };
 
 const ImagesList: React.FC<Props> = ({
@@ -26,7 +26,12 @@ const ImagesList: React.FC<Props> = ({
 }) => {
   const renderItem = ({item}: {item: CatImageType}) => {
     return (
-      <CatImage url={item?.url} id={item?.id} withAddToFav={withAddToFav} />
+      <CatImage
+        key={item.id}
+        url={item?.url}
+        id={item?.id}
+        withAddToFav={withAddToFav}
+      />
     );
   };
 

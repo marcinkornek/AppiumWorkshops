@@ -20,6 +20,10 @@ type Props = {
   breeds: BreedType[];
 };
 
+const renderSeparator = () => <View style={styles.separator} />;
+
+const renderEmptyComponent = () => <Text>No results</Text>;
+
 const SearchList: React.FC<Props> = ({breeds}) => {
   const navigation = useNavigation<ScreenNavigationProp>();
   const handlePress = (breed: BreedType) => {
@@ -27,12 +31,8 @@ const SearchList: React.FC<Props> = ({breeds}) => {
   };
 
   const renderItem = ({item}: {item: BreedType}) => {
-    return <SearchItem breed={item} onPress={handlePress} />;
+    return <SearchItem key={item.id} breed={item} onPress={handlePress} />;
   };
-
-  const renderSeparator = () => <View style={styles.separator} />;
-
-  const renderEmptyComponent = () => <Text>No results</Text>;
 
   return (
     <FlatList

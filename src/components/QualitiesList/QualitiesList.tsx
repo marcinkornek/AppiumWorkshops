@@ -8,12 +8,17 @@ type Props = {
 };
 
 const RatingList: React.FC<Props> = ({breed}) => {
-  return catQualities.map(quality => (
-    <QualityItem
-      title={quality.replace('_', ' ')}
-      number={breed[quality.toLowerCase()]}
-    />
-  ));
+  return (
+    <>
+      {catQualities.map(quality => (
+        <QualityItem
+          key={quality}
+          title={quality.replace('_', ' ')}
+          number={breed[quality.toLowerCase() as keyof BreedType] as number}
+        />
+      ))}
+    </>
+  );
 };
 
 export default RatingList;
