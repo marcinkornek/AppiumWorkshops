@@ -1,16 +1,20 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import * as React from 'react';
-import {StyleSheet, Text} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {useQuery} from 'react-query';
 import BreedDetails from '../../components/BreedDetails/BreedDetails';
 import ImagesList from '../../components/ImagesList/ImagesList';
 import QualitiesList from '../../components/QualitiesList/QualitiesList';
 import {RootStackParamList} from '../../routes/RootNavigator';
 import {getImages} from '../../utils/api';
+import {breedDetailsScreenIDs} from '../../utils/testIDs';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'BreedDetails'>;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   photosSection: {
     marginTop: 20,
     marginLeft: 10,
@@ -37,11 +41,13 @@ const BreedDetailsScreen = ({route}: Props) => {
   );
 
   return (
-    <ImagesList
-      images={images}
-      isLoading={isLoading}
-      ListHeaderComponent={renderHeaderComponent()}
-    />
+    <View style={styles.container} testID={breedDetailsScreenIDs.breedDetails}>
+      <ImagesList
+        images={images}
+        isLoading={isLoading}
+        ListHeaderComponent={renderHeaderComponent()}
+      />
+    </View>
   );
 };
 

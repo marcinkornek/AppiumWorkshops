@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {View, Text, StyleSheet, Linking, Pressable} from 'react-native';
-import {breedDetailsIDs} from '../../utils/testIDs';
+import {breedDetailsScreenIDs} from '../../utils/testIDs';
 import {BreedType} from '../../utils/types';
 import CatImage from '../CatImage/CatImage';
 
@@ -35,9 +35,11 @@ const BreedDetails: React.FC<Props> = ({breed}) => {
         <CatImage url={breed.image.url} size="large" withAddToFav={false} />
       )}
       <View style={styles.descriptionWrapper}>
-        <Text style={styles.name}>{breed.name}</Text>
+        <Text testID={breedDetailsScreenIDs.breedTitle} style={styles.name}>
+          {breed.name}
+        </Text>
         <Text
-          testID={breedDetailsIDs.breedDescription}
+          testID={breedDetailsScreenIDs.breedDescription}
           style={styles.description}>
           {breed.description}
         </Text>

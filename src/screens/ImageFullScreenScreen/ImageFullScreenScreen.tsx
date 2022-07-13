@@ -30,7 +30,7 @@ const ImageFullScreenScreen = ({route, navigation}: Props) => {
 
   return (
     <View style={styles.container}>
-      <CatImage url={url} id={id} size="large" />
+      <CatImage url={url} id={id} size="fullScreen" />
       <Pressable onPress={handleClose} style={styles.closeBtn}>
         <Icon name="close" color="white" size={40} />
       </Pressable>

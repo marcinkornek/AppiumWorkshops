@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {ActivityIndicator, FlatList, StyleSheet} from 'react-native';
+import {isWeb} from '../../utils/constants';
 import {CatImageType} from '../../utils/types';
 import CatImage from '../CatImage/CatImage';
 
@@ -44,7 +45,7 @@ const ImagesList: React.FC<Props> = ({
       data={images}
       renderItem={renderItem}
       keyExtractor={item => item.id}
-      numColumns={3}
+      numColumns={isWeb ? 5 : 3}
       columnWrapperStyle={styles.columnWrapperStyle}
       ListHeaderComponent={ListHeaderComponent}
     />

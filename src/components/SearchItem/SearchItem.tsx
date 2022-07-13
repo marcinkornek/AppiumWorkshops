@@ -2,7 +2,6 @@ import * as React from 'react';
 import {Text, StyleSheet, Pressable} from 'react-native';
 import {BreedType} from '../../utils/types';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {searchItemTestID} from '../../utils/testIDs';
 
 const styles = StyleSheet.create({
   row: {
@@ -21,10 +20,7 @@ type Props = {
 
 const SearchItem: React.FC<Props> = ({breed, onPress}) => {
   return (
-    <Pressable
-      onPress={() => onPress(breed)}
-      style={styles.row}
-      testID={`${searchItemTestID}-${breed.name}`}>
+    <Pressable onPress={() => onPress(breed)} style={styles.row}>
       <Text>{breed.name}</Text>
       <Icon name="chevron-right" />
     </Pressable>
