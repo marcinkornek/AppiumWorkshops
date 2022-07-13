@@ -10,7 +10,7 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "gen:env": "yarn rnuc .env",
-    "postinstall": "patch-package",
+    "postinstall": "patch-package && yarn gen:env",
     "test-e2e:android": "wdio run ./test/wdio.android.conf.ts",
     "test-e2e:android:build": "cd android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release && cd ..",
     "test-e2e:ios": "wdio run ./test/wdio.ios.conf.ts",
