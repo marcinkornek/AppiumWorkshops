@@ -5,7 +5,7 @@ import useAddToFavourites from '../../hooks/useAddToFavourites';
 import useIsImageFavourite from '../../hooks/useIsImageFavourite';
 import useRemoveFromFavourites from '../../hooks/useRemoveFromFavourites';
 import {StackNavigationProp} from '../../routes/RootNavigator';
-import {CAT_PLACEHOLDER_URL} from '../../utils/constants';
+import {CAT_PLACEHOLDER_URL, isWeb} from '../../utils/constants';
 import FavouritesStar from '../FavouritesStar/FavouritesStar';
 
 const styles = StyleSheet.create({
@@ -13,12 +13,19 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   image: {
-    width: 100,
-    height: 100,
+    width: 150,
+    height: 150,
   },
   imageLarge: {
     width: '100%',
     height: undefined,
+    aspectRatio: 1,
+    maxWidth: 300,
+    maxHeight: 300,
+  },
+  imageFullScreen: {
+    width: '100%',
+    height: isWeb ? '100vh' : undefined,
     aspectRatio: 1,
   },
   favouritesStar: {
@@ -31,7 +38,7 @@ const styles = StyleSheet.create({
 type Props = {
   id?: string; // image_id
   url?: string;
-  size?: 'small' | 'large';
+  size?: 'small' | 'large' | 'fullScreen';
   withAddToFav?: boolean;
 };
 
@@ -71,7 +78,12 @@ const CatImage: React.FC<Props> = ({
       onPress={withAddToFav ? handleOpenModal : undefined}>
       <Image
         source={{uri: url || CAT_PLACEHOLDER_URL}}
-        style={[styles.image, size === 'large' && styles.imageLarge]}
+        style={[
+          styles.image,
+          size === 'large' && styles.imageLarge,
+          size === 'fullScreen' && styles.imageFullScreen,
+        ]}
+        resizeMode="cover"
       />
       {withAddToFav && (
         <FavouritesStar

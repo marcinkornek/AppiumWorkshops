@@ -3,12 +3,14 @@ import * as React from 'react';
 import {FlatList, StyleSheet} from 'react-native';
 import {ScreenNavigationProp} from '../../routes/RootNavigator';
 import {breedsListIDs} from '../../utils/testIDs';
+import {isWeb} from '../../utils/constants';
 import {BreedType} from '../../utils/types';
 import BreedItem from '../BreedItem/BreedItem';
 
 const styles = StyleSheet.create({
   listContentContainer: {
     padding: 10,
+    marginBottom: 30,
     justifyContent: 'space-between',
   },
 });
@@ -32,7 +34,7 @@ const BreedsList: React.FC<Props> = ({breeds}) => {
       data={breeds}
       renderItem={renderItem}
       keyExtractor={item => item.id}
-      numColumns={3}
+      numColumns={isWeb ? 5 : 3}
       columnWrapperStyle={styles.listContentContainer}
       testID={breedsListIDs.breedsList}
     />
