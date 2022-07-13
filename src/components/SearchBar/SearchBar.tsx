@@ -1,11 +1,6 @@
 import * as React from 'react';
 import {View, StyleSheet, TextInput, Pressable} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {
-  searchBarInputTestID,
-  searchBarSubmitBtnTestID,
-  searchBarTestID,
-} from '../../utils/testIDs';
 import PrimaryButton from '../PrimaryButton/PrimaryButton';
 
 const styles = StyleSheet.create({
@@ -48,14 +43,13 @@ const SearchBar: React.FC<Props> = ({onSearch}) => {
   };
 
   return (
-    <View style={styles.bar} testID={searchBarTestID}>
+    <View style={styles.bar}>
       <View style={styles.textInputWrapper}>
         <TextInput
           style={styles.input}
           onChangeText={setQuery}
           value={query}
           placeholder="Search"
-          testID={searchBarInputTestID}
         />
         {query && (
           <Pressable onPress={handleClear} style={styles.clearBtn}>
@@ -63,11 +57,7 @@ const SearchBar: React.FC<Props> = ({onSearch}) => {
           </Pressable>
         )}
       </View>
-      <PrimaryButton
-        onPress={handleSearch}
-        title="Search"
-        testID={searchBarSubmitBtnTestID}
-      />
+      <PrimaryButton onPress={handleSearch} title="Search" />
     </View>
   );
 };

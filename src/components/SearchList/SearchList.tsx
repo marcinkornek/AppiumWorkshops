@@ -2,7 +2,6 @@ import {useNavigation} from '@react-navigation/native';
 import * as React from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {ScreenNavigationProp} from '../../routes/RootNavigator';
-import {searchResultsTestID} from '../../utils/testIDs';
 import {BreedType} from '../../utils/types';
 import SearchItem from '../SearchItem/SearchItem';
 
@@ -36,7 +35,6 @@ const SearchList: React.FC<Props> = ({breeds}) => {
 
   return (
     <FlatList
-      testID={searchResultsTestID}
       data={breeds}
       renderItem={renderItem}
       keyExtractor={item => item.id}

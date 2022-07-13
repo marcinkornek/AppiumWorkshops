@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Text, StyleSheet, Pressable} from 'react-native';
-import {primaryButtonDefaultTestID} from '../../utils/testIDs';
+import {componentTestIDs} from '../../utils/testIDs';
 
 const styles = StyleSheet.create({
   button: {
@@ -21,7 +21,7 @@ type Props = {
 const PrimaryButton: React.FC<Props> = ({
   onPress,
   title,
-  testID = primaryButtonDefaultTestID,
+  testID = componentTestIDs.primaryButtonDefault,
 }) => {
   return (
     <Pressable onPress={onPress} style={styles.button} testID={testID}>

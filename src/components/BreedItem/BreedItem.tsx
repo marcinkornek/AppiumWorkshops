@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Text, StyleSheet, Pressable} from 'react-native';
-import {breedItemTestID} from '../../utils/testIDs';
+import {homeScreenIDs} from '../../utils/testIDs';
 import {BreedType} from '../../utils/types';
 import CatImage from '../CatImage/CatImage';
 
@@ -19,7 +19,7 @@ const BreedItem: React.FC<Props> = ({breed, onPress}) => {
   return (
     <Pressable
       onPress={() => onPress(breed)}
-      testID={`${breedItemTestID}-${breed.name}`}>
+      testID={`${homeScreenIDs.breedItem}-${breed.name}`}>
       <CatImage
         url={breed?.image?.url}
         id={breed?.image?.id}

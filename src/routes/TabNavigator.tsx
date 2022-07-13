@@ -5,6 +5,7 @@ import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import SearchScreen from '../screens/SearchScreen/SearchScreen';
 
 import FavouritesScreen from '../screens/FavouritesScreen/FavouritesScreen';
+import {tabsIDs} from '../utils/testIDs';
 
 const Tab = createBottomTabNavigator();
 
@@ -19,6 +20,7 @@ const TabNavigator = () => {
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="home" color={color} size={size} />
           ),
+          tabBarTestID: tabsIDs.homeTab,
         }}
       />
       <Tab.Screen
@@ -29,6 +31,7 @@ const TabNavigator = () => {
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="magnify" color={color} size={size} />
           ),
+          tabBarTestID: tabsIDs.searchTab,
         }}
       />
       <Tab.Screen
@@ -39,6 +42,7 @@ const TabNavigator = () => {
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="heart" color={color} size={size} />
           ),
+          tabBarTestID: tabsIDs.favoritesTab,
         }}
       />
     </Tab.Navigator>

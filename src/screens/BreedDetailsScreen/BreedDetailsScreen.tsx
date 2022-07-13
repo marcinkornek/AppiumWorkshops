@@ -7,6 +7,7 @@ import ImagesList from '../../components/ImagesList/ImagesList';
 import QualitiesList from '../../components/QualitiesList/QualitiesList';
 import {RootStackParamList} from '../../routes/RootNavigator';
 import {getImages} from '../../utils/api';
+import {breedDetailsScreenIDs} from '../../utils/testIDs';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'BreedDetails'>;
 
@@ -40,7 +41,7 @@ const BreedDetailsScreen = ({route}: Props) => {
   );
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID={breedDetailsScreenIDs.breedDetails}>
       <ImagesList
         images={images}
         isLoading={isLoading}
